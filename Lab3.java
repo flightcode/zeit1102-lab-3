@@ -14,8 +14,8 @@ public class Lab3 {
 
     public void init() {
         /*
-         * System.out.print("Input two integers: "); int i1 = scan.nextInt(); int i2 =
-         * scan.nextInt(); System.out.println("Random Number: " + random(i1,i2));
+         * System.out.print("Input two integers: "); int i1 = scan.nextInt(); int i2
+         * =scan.nextInt(); System.out.println("Random Number: " + random(i1,i2));
          */
 
         /*
@@ -32,8 +32,45 @@ public class Lab3 {
          * strRemove(str,c));
          */
 
-        for (Day day : Day.values()) {
-            System.out.println(day);
+        /*
+         * for (Day day : Day.values()) { System.out.println(day); }
+         */
+
+        System.out.print("Enter a string: ");
+        String str = scan.nextLine();
+        System.out.println("");
+        String option;
+        do {
+            System.out.println("The current string is: " + str);
+            System.out.println("Do you want to");
+            System.out.println("(q)uit the program");
+            System.out.print("add a (n)ew string: ");
+            option = scan.nextLine();
+            System.out.println("");
+            switch (handleResponse(option)) {
+                case 1:
+                    System.out.print("What is the new string: ");
+                    str = scan.nextLine();
+                    System.out.println("");
+                    break;
+                case 0:
+                    System.out.println("bye!");
+                    break;
+            }
+        } while (handleResponse(option) == 1);
+
+    }
+
+    int handleResponse(String input) {
+        switch (input.charAt(0)) {
+            case 'q':
+            case 'Q':
+                return 0;
+            case 'n':
+            case 'N':
+                return 1;
+            default:
+                return -1;
         }
     }
 
