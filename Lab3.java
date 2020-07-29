@@ -44,7 +44,8 @@ public class Lab3 {
             System.out.println("The current string is: " + str);
             System.out.println("Do you want to");
             System.out.println("(q)uit the program");
-            System.out.print("add a (n)ew string: ");
+            System.out.println("add a (n)ew string");
+            System.out.print("determine if a (p)alindrome: ");
             option = scan.nextLine();
             System.out.println("");
             switch (handleResponse(option)) {
@@ -53,11 +54,20 @@ public class Lab3 {
                     str = scan.nextLine();
                     System.out.println("");
                     break;
+                case 2:
+                    if (palindrome(str)) {
+                        System.out.println("Yes it is!");
+                        System.out.println("");
+                    } else {
+                        System.out.println("No it isn't );");
+                        System.out.println("");
+                    }
+                    break;
                 case 0:
                     System.out.println("bye!");
                     break;
             }
-        } while (handleResponse(option) == 1);
+        } while (handleResponse(option) != 0);
 
     }
 
@@ -69,9 +79,21 @@ public class Lab3 {
             case 'n':
             case 'N':
                 return 1;
+            case 'p':
+            case 'P':
+                return 2;
             default:
                 return -1;
         }
+    }
+
+    boolean palindrome(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != input.charAt(input.length() - (i + 1))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     int random(int i1, int i2) {
